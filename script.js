@@ -53,6 +53,7 @@ const habitatData = [
       .attr('viewBox', `0 0 ${width} ${height}`);
   
     const defs = svg.append('defs');
+  
     const glow = defs.append('filter').attr('id', 'lineGlow');
     glow.append('feGaussianBlur').attr('stdDeviation', 3).attr('result', 'coloredBlur');
     const feMerge = glow.append('feMerge');
@@ -132,45 +133,65 @@ const habitatData = [
       .attr('stroke-width', 3)
       .attr('d', lineDisturbed);
   
-    const pointGroup = g.append('g');
-  
-    pointGroup.selectAll('.old-point')
+    g.selectAll('.old-point')
       .data(habitatData)
       .join('circle')
       .attr('class', 'old-point')
       .attr('cx', d => x(d.year))
       .attr('cy', d => y(d.oldGrowth))
       .attr('r', 5)
-      .attr('fill', '#b8d9af')
-      .style('cursor', 'pointer')
-      .on('mousemove', (event, d) => {
-        showTooltip(event, `<strong>${d.year}</strong><br>Old-growth: ${d.oldGrowth}%<br>Disturbed: ${d.disturbed}%`);
-        updateTreeDisplay(d);
-      })
-      .on('mouseleave', hideTooltip);
+      .attr('fill', '#b8d9af');
   
-    pointGroup.selectAll('.dist-point')
+    g.selectAll('.dist-point')
       .data(habitatData)
       .join('circle')
       .attr('class', 'dist-point')
       .attr('cx', d => x(d.year))
       .attr('cy', d => y(d.disturbed))
       .attr('r', 5)
-      .attr('fill', '#e7aaa2')
+      .attr('fill', '#e7aaa2');
+  
+    const hoverLine = g.append('line')
+      .attr('stroke', 'rgba(255,255,255,0.18)')
+      .attr('y1', 0)
+      .attr('y2', innerHeight)
+      .style('opacity', 0);
+  
+    g.append('rect')
+      .attr('width', innerWidth)
+      .attr('height', innerHeight)
+      .attr('fill', 'transparent')
       .style('cursor', 'pointer')
-      .on('mousemove', (event, d) => {
-        showTooltip(event, `<strong>${d.year}</strong><br>Old-growth: ${d.oldGrowth}%<br>Disturbed: ${d.disturbed}%`);
-        updateTreeDisplay(d);
+      .on('mousemove', function(event) {
+        const [mx] = d3.pointer(event, this);
+        const year = x.invert(mx);
+  
+        const nearest = habitatData.reduce((a, b) =>
+          Math.abs(b.year - year) < Math.abs(a.year - year) ? b : a
+        );
+  
+        hoverLine
+          .style('opacity', 1)
+          .attr('x1', x(nearest.year))
+          .attr('x2', x(nearest.year));
+  
+        updateTreeDisplay(nearest);
+  
+        showTooltip(
+          event,
+          `<strong>${nearest.year}</strong><br>Old-growth: ${nearest.oldGrowth}%<br>Disturbed: ${nearest.disturbed}%`
+        );
       })
-      .on('mouseleave', hideTooltip);
+      .on('mouseleave', () => {
+        hoverLine.style('opacity', 0);
+        hideTooltip();
+      });
   }
   
   function birdSvg() {
     return `
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path fill="currentColor" d="M6 36c7-8 14-12 22-13 4 0 8 1 12 3 4-6 9-10 18-13-2 6-4 11-7 15 6 1 11 4 15 9-7 2-13 3-18 3-7 0-12-2-18-6-7 5-15 7-24 5Z"/>
-        <path fill="currentColor" opacity="0.72" d="M26 24c3-5 6-9 11-12-1 5-1 10 1 14-4-1-8-2-12-2Z"/>
-      </svg>`;
+      <img src="images/murrelet.png" alt="" class="mini-bird-img" draggable="false" />
+    `;
   }
   
   function treeSvg() {
@@ -225,27 +246,41 @@ const habitatData = [
   
   function updateTreeDisplay(datum) {
     const totalTrees = 100;
-    const activeTrees = Math.max(1, Math.round((datum.oldGrowth / 100) * totalTrees));
+  
+    const oldGrowthTrees = Math.round((datum.oldGrowth / 100) * totalTrees);
+  
+    const disturbedRatio = datum.disturbed / 100;
+  
+    const disturbedTrees = Math.round(oldGrowthTrees * disturbedRatio);
+  
     const icons = Array.from(document.querySelectorAll('.tree-icon'));
   
     icons.forEach((icon, index) => {
-      icon.classList.remove('active', 'faded');
-      if (index < activeTrees) {
+      icon.classList.remove('active', 'disturbed', 'faded');
+  
+      if (index < (oldGrowthTrees - disturbedTrees)) {
         icon.classList.add('active');
-      } else {
+      } 
+      else if (index < oldGrowthTrees) {
+        icon.classList.add('disturbed');
+      } 
+      else {
         icon.classList.add('faded');
       }
     });
+  
+    const healthyTrees = oldGrowthTrees - disturbedTrees;
   
     const title = document.getElementById('tree-readout-title');
     const text = document.getElementById('tree-readout-text');
   
     if (title) {
-      title.textContent = `${datum.year} — ${activeTrees} / 100 trees`;
+      title.textContent = `${datum.year} — ${healthyTrees} healthy / ${disturbedTrees} disturbed / ${100 - oldGrowthTrees} lost`;
     }
+  
     if (text) {
       text.textContent =
-        `Old-growth: ${datum.oldGrowth}% relative to the 1978 baseline. As habitat declines, fewer old-growth trees remain visible.`;
+        `Old-growth remaining: ${datum.oldGrowth}%. Of that remaining forest, ${datum.disturbed}% is disturbed.`;
     }
   }
   

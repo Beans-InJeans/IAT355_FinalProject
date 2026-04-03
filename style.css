@@ -295,11 +295,36 @@
   }
 
   .tree-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.16;
+    transform: scale(0.95);
+    transition: 180ms ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.22));
     color: #7fbf7a;
   }
   
-  .bird-icon.active,
   .tree-icon.active {
+    opacity: 1;
+    transform: scale(1);
+    color: #7fbf7a;
+    filter: drop-shadow(0 0 6px rgba(127,191,122,0.45));
+  }
+  
+  .tree-icon.disturbed {
+    opacity: 1;
+    transform: scale(1);
+    color: #e7aaa2;
+    filter: drop-shadow(0 0 6px rgba(231,170,162,0.4));
+  }
+  
+  .tree-icon.faded {
+    opacity: 0.08;
+    color: rgba(255,255,255,0.35);
+    filter: none;
+  }
+  
+  .bird-icon.active {
     opacity: 1;
     transform: scale(1);
   }
@@ -307,19 +332,10 @@
   .bird-icon.active {
     filter: drop-shadow(0 0 10px rgba(184,217,175,0.45));
   }
-
-  .tree-icon.active {
-    filter: drop-shadow(0 0 10px rgba(127,191,122,0.42));
-  }
   
   .bird-icon.faded {
     opacity: 0.12;
     color: var(--pink);
-  }
-
-  .tree-icon.faded {
-    opacity: 0.10;
-    color: rgba(231,170,162,0.9);
   }
   
   .bird-readout {
@@ -333,6 +349,33 @@
     font-size: 1.12rem;
     display: block;
     margin-bottom: 8px;
+  }
+  .mini-bird-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+  }
+  
+  .bird-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.16;
+    transform: scale(0.95);
+    transition: 180ms ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.22));
+  }
+  
+  .bird-icon.active {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px rgba(184,217,175,0.45));
+  }
+  
+  .bird-icon.faded {
+    opacity: 0.10;
   }
 
   .tree-panel-divider {
@@ -372,9 +415,19 @@
     background:
       linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.55)),
       url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80') center/cover;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+  }
+  
+  .status-image .card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   .status-image .eyebrow { margin-bottom: 8px; }
