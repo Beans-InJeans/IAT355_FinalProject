@@ -240,8 +240,10 @@ const habitatData = [
     });
   
     document.getElementById('bird-readout-title').textContent = `${datum.year} — ${activeBirds} / 100 birds`;
+    const percent = Math.round(datum.index * 100);
+
     document.getElementById('bird-readout-text').textContent =
-      `Population index: ${datum.index.toFixed(2)} relative to the 1978 baseline. As the index decreases, fewer bird icons remain visible.`;
+      `Percentage remaining: ${percent}%. As the population declines, fewer birds remain visible.`;
   }
   
   function updateTreeDisplay(datum) {
@@ -355,8 +357,8 @@ const habitatData = [
       .attr('fill', d => d.index > 0.55 ? '#b8d9af' : '#e7aaa2')
       .style('cursor', 'pointer')
       .on('mouseenter mousemove', (event, d) => {
-        const birds = Math.max(1, Math.round(d.index * 100));
-        showTooltip(event, `<strong>${d.year}</strong><br>Population index: ${d.index.toFixed(2)}<br>Visible birds: ${birds} / 100`);
+        const percent = Math.round(d.index * 100);
+        showTooltip(event, `<strong>${d.year}</strong><br>Remaining: ${percent}%<br>Visible birds: ${birds} / 100`);
         updateBirdDisplay(d);
       })
       .on('mouseleave', hideTooltip);
