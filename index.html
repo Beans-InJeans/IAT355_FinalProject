@@ -17,6 +17,7 @@
         <a href="#overview" class="active">Overview</a>
         <a href="#habitat">Habitat Loss</a>
         <a href="#population">Population Trends</a>
+        <a href="#sources">Sources</a>
       </nav>
     </div>
   </header>
@@ -37,8 +38,8 @@
           </div>
         </div>
         <div class="bird-hero-wrap">
-            <div class="bird-glow"></div>
-            <img src="images/murrelet.png" alt="Marbled Murrelet" class="hero-bird-img">
+          <div class="bird-glow"></div>
+          <img src="images/murrelet.png" alt="Marbled Murrelet" class="hero-bird-img">
         </div>
       </div>
     </section>
@@ -58,8 +59,8 @@
             <div class="card-inner">
               <div class="stat-row">
                 <div>
-                  <div class="stat-large">51%</div>
-                  <div class="stat-caption">Net canopy loss since 1978</div>
+                  <div class="stat-large">36%</div>
+                  <div class="stat-caption">Average habitat loss by 2020 (sampled BC regions)</div>
                 </div>
                 <div class="pill-group">
                   <div class="pill"><span class="dot" style="background: var(--green);"></span>Old Growth</div>
@@ -67,7 +68,10 @@
                 </div>
               </div>
               <h3 class="chart-title">Canopy Change Across Key Years</h3>
-              <p class="chart-subtitle">Hover a point to view exact values and compare intact habitat with disturbed landscape.</p>
+              <p class="chart-subtitle">
+                Hover a point to view exact values and compare intact habitat with disturbed landscape.
+                Intermediate years are interpolated between 2002 and 2020.
+              </p>
               <div id="habitat-chart"></div>
               <div class="legend">
                 <span class="lg-old">Old-growth canopy coverage (%)</span>
@@ -78,18 +82,12 @@
 
           <aside class="card metric-large">
             <div class="card-inner">
-              <h3 class="small-title">Reproductive Success Rate</h3>
-              <div class="metric-value">0.18</div>
-              <p class="chart-subtitle">Average fledglings per breeding pair. Lower reproductive success is associated with habitat disturbance and fragmentation.</p>
-              <div class="progress-track"><div class="progress-fill"></div></div>
-              <div class="stat-caption" style="margin-top:10px;">Low genetic resilience relative to target threshold</div>
-
-              <div class="tree-panel-divider"></div>
-
               <h3 class="small-title tree-panel-title">Old-Growth Tree Count</h3>
               <div class="bird-readout">
-                <strong id="tree-readout-title">1978 — 10 / 10 trees</strong>
-                <span id="tree-readout-text">Old-growth: 100% relative to baseline. Hover the habitat chart to compare how many old-growth trees remain visible over time.</span>
+                <strong id="tree-readout-title">2002: 5,829 km² healthy / 4,051 km² disturbed</strong>
+                <span id="tree-readout-text">
+                  In 2002, the visualization estimates about 9,880 km² of habitat remaining. Of that, around 4,051 km² is already under disturbance pressure, leaving about 5,829 km² of healthier nesting habitat.
+                </span>
               </div>
               <div id="tree-icons" aria-label="Tree icon count"></div>
             </div>
@@ -111,11 +109,14 @@
         <div class="grid-main">
           <article class="card">
             <div class="card-inner">
-              <h3 class="chart-title">Population Index Over Time</h3>
-              <p class="chart-subtitle">Hover a point to update the bird count. The 1978 baseline represents 10 out of 10 birds.</p>
+              <h3 class="chart-title">Population Over Time</h3>
+              <p class="chart-subtitle">
+                Hover a point to view estimated population ranges and average counts.
+                Intermediate years are interpolated between 2002 and 2020.
+              </p>
               <div id="population-chart"></div>
               <div class="legend">
-                <span class="lg-pop">Population index relative to 1978 baseline</span>
+                <span class="lg-pop">Average estimated population (birds)</span>
               </div>
             </div>
           </article>
@@ -124,8 +125,10 @@
             <div class="card-inner">
               <h3 class="small-title">Bird Count Interaction</h3>
               <div class="bird-readout">
-                <strong id="bird-readout-title">1978 — 10 / 10 birds</strong>
-                <span id="bird-readout-text">Population index: 1.00. Hover along the line to compare how many birds remain visible over time.</span>
+                <strong id="bird-readout-title">2002: estimated population: 65,000-78,000 birds</strong>
+                <span id="bird-readout-text">
+                  The average estimate in 2002 is about 71,500 birds. In this visual, each bird icon represents 1,000 birds.
+                </span>
               </div>
               <div id="bird-icons" aria-label="Bird icon count"></div>
             </div>
@@ -158,15 +161,73 @@
 
           <article class="card">
             <div class="card-inner">
-              <h3 class="small-title">Genetic Connectivity</h3>
-              <p class="chart-subtitle">Recent DNA sampling suggests BC’s population is becoming genetically isolated from Alaska populations as habitat corridors disappear.</p>
-              <div class="progress-track"><div class="progress-fill" style="width:78%"></div></div>
+              <h3 class="small-title">Population Impact</h3>
+              <p class="chart-subtitle">
+                Using the midpoint of the estimated ranges, this visualization shows a decline from about 71,500 birds in 2002 to about 56,500 birds in 2020, which is roughly 15,000 fewer birds.
+              </p>
+              <div class="progress-track"><div class="progress-fill" style="width:77%"></div></div>
               <div style="display:flex; justify-content:space-between; margin-top:10px; color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">
-                <span>Low EU diversity</span>
-                <span>Target</span>
+                <span>2002 baseline</span>
+                <span>2020 estimate</span>
               </div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="sources">
+      <div class="card">
+        <div class="card-inner">
+          <h3 class="small-title">Data Sources & References</h3>
+          <p class="chart-subtitle">
+            These sources were used to inform habitat loss, population range estimates, conservation status, and species background.
+            Intermediate values shown between 2002 and 2020 are interpolated for visual storytelling.
+          </p>
+
+          <div class="feature-list">
+            <div>
+              <strong>Environment and Climate Change Canada — Recovery Strategy</strong><br>
+              <a href="https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/recovery-strategies/marbled-murrelet-amended-2021.html" target="_blank" rel="noopener noreferrer">
+                Marbled Murrelet (Brachyramphus marmoratus): amended recovery strategy
+              </a>
+            </div>
+
+            <div>
+              <strong>Government of British Columbia — Species Summary</strong><br>
+              <a href="https://a100.gov.bc.ca/pub/eswp/esr.do?id=14153" target="_blank" rel="noopener noreferrer">
+                Brachyramphus marmoratus — Marbled Murrelet
+              </a>
+            </div>
+
+            <div>
+              <strong>COSEWIC — Assessment and Status Report</strong><br>
+              <a href="https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/marbled-murrelet-2012.html" target="_blank" rel="noopener noreferrer">
+                COSEWIC assessment and status report on the Marbled Murrelet in Canada
+              </a>
+            </div>
+
+            <div>
+              <strong>Environment and Climate Change Canada — Recovery Strategy PDF</strong><br>
+              <a href="https://publications.gc.ca/collections/collection_2023/eccc/En3-4-186-2022-eng.pdf" target="_blank" rel="noopener noreferrer">
+                Recovery strategy PDF with habitat-loss context
+              </a>
+            </div>
+
+            <div>
+              <strong>Government of British Columbia — Marbled Murrelet Program Page</strong><br>
+              <a href="https://www2.gov.bc.ca/gov/content/environment/plants-animals-ecosystems/species-ecosystems-at-risk/implementation/conservation-projects-partnerships/marbled-murrelet" target="_blank" rel="noopener noreferrer">
+                Marbled Murrelet conservation projects and implementation
+              </a>
+            </div>
+
+            <div>
+              <strong>Birds Canada — Old Growth Logging in British Columbia</strong><br>
+              <a href="https://www.birdscanada.org/old-growth-logging-in-british-columbia" target="_blank" rel="noopener noreferrer">
+                Old Growth Logging in British Columbia
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -190,13 +251,7 @@
     <div class="container footer-grid">
       <div>
         <strong style="display:block; color: var(--text); margin-bottom:6px;">The Ecological Record</strong>
-        <span>© 2026 Marbled Murrelet Conservation Project. Data placeholders for development and prototyping.</span>
-      </div>
-      <div class="footer-links">
-        <a href="#">Data Sources</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Methodology</a>
-        <a href="#">Support</a>
+        <span>© 2026 Marbled Murrelet Conservation Project. By Joshua Nam, Jenna Han, and Rico Wen</span>
       </div>
     </div>
   </footer>
