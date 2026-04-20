@@ -34,7 +34,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#habitat">View Habitat Data</a>
-            <a class="btn" href="#population">Explore Population Trends</a>
+            <a class="btn btn-primary" href="#population">Explore Population Trends</a>
           </div>
         </div>
         <div class="bird-hero-wrap">
@@ -84,10 +84,16 @@
             <div class="card-inner">
               <h3 class="small-title tree-panel-title">Old-Growth Tree Count</h3>
               <div class="bird-readout">
-                <strong id="tree-readout-title">2002: 5,829 km² healthy / 4,051 km² disturbed</strong>
-                <span id="tree-readout-text">
-                  In 2002, the visualization estimates about 9,880 km² of habitat remaining. Of that, around 4,051 km² is already under disturbance pressure, leaving about 5,829 km² of healthier nesting habitat.
-                </span>
+                <strong id="tree-readout-title">2002</strong>
+
+                <div class="stat-breakdown">
+                  <div><span>🌲 Healthy:</span> <span id="tree-healthy">5,829 km²</span></div>
+                  <div><span>⚠️ Disturbed:</span> <span id="tree-disturbed">4,051 km²</span></div>
+                </div>
+
+                <p id="tree-readout-text" class="readout-desc">
+                  About half of the habitat is already disturbed, reducing safe nesting areas.
+                </p>
               </div>
               <div id="tree-icons" aria-label="Tree icon count"></div>
             </div>
@@ -123,12 +129,18 @@
 
           <aside class="card">
             <div class="card-inner">
-              <h3 class="small-title">Bird Count Interaction</h3>
+              <h3 class="small-title">Marbled Murrelet Population</h3>
               <div class="bird-readout">
-                <strong id="bird-readout-title">2002: estimated population: 65,000-78,000 birds</strong>
-                <span id="bird-readout-text">
-                  The average estimate in 2002 is about 71,500 birds. In this visual, each bird icon represents 1,000 birds.
-                </span>
+                <strong id="bird-readout-title">2002</strong>
+
+                <div class="stat-breakdown">
+                  <div><span>🐦 Range:</span> <span id="bird-range">65,000–78,000</span></div>
+                  <div><span>📊 Avg:</span> <span id="bird-avg">71,500</span></div>
+                </div>
+
+                <p id="bird-readout-text" class="readout-desc">
+                  Each bird icon represents 1,000 birds.
+                </p>
               </div>
               <div id="bird-icons" aria-label="Bird icon count"></div>
             </div>
@@ -187,42 +199,42 @@
 
           <div class="feature-list">
             <div>
-              <strong>Environment and Climate Change Canada — Recovery Strategy</strong><br>
+              <strong>Environment and Climate Change Canada - Recovery Strategy</strong><br>
               <a href="https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/recovery-strategies/marbled-murrelet-amended-2021.html" target="_blank" rel="noopener noreferrer">
                 Marbled Murrelet (Brachyramphus marmoratus): amended recovery strategy
               </a>
             </div>
 
             <div>
-              <strong>Government of British Columbia — Species Summary</strong><br>
+              <strong>Government of British Columbia - Species Summary</strong><br>
               <a href="https://a100.gov.bc.ca/pub/eswp/esr.do?id=14153" target="_blank" rel="noopener noreferrer">
                 Brachyramphus marmoratus — Marbled Murrelet
               </a>
             </div>
 
             <div>
-              <strong>COSEWIC — Assessment and Status Report</strong><br>
+              <strong>COSEWIC - Assessment and Status Report</strong><br>
               <a href="https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/marbled-murrelet-2012.html" target="_blank" rel="noopener noreferrer">
                 COSEWIC assessment and status report on the Marbled Murrelet in Canada
               </a>
             </div>
 
             <div>
-              <strong>Environment and Climate Change Canada — Recovery Strategy PDF</strong><br>
+              <strong>Environment and Climate Change Canada - Recovery Strategy PDF</strong><br>
               <a href="https://publications.gc.ca/collections/collection_2023/eccc/En3-4-186-2022-eng.pdf" target="_blank" rel="noopener noreferrer">
                 Recovery strategy PDF with habitat-loss context
               </a>
             </div>
 
             <div>
-              <strong>Government of British Columbia — Marbled Murrelet Program Page</strong><br>
+              <strong>Government of British Columbia - Marbled Murrelet Program Page</strong><br>
               <a href="https://www2.gov.bc.ca/gov/content/environment/plants-animals-ecosystems/species-ecosystems-at-risk/implementation/conservation-projects-partnerships/marbled-murrelet" target="_blank" rel="noopener noreferrer">
                 Marbled Murrelet conservation projects and implementation
               </a>
             </div>
 
             <div>
-              <strong>Birds Canada — Old Growth Logging in British Columbia</strong><br>
+              <strong>Birds Canada - Old Growth Logging in British Columbia</strong><br>
               <a href="https://www.birdscanada.org/old-growth-logging-in-british-columbia" target="_blank" rel="noopener noreferrer">
                 Old Growth Logging in British Columbia
               </a>

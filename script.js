@@ -238,6 +238,12 @@ function updateBirdDisplay(datum) {
   const activeBirds = Math.max(1, Math.min(TOTAL_BIRD_ICONS, Math.round(datum.avg / BIRDS_PER_ICON)));
   const icons = Array.from(document.querySelectorAll('.bird-icon'));
 
+  document.getElementById('bird-range').textContent =
+  `${datum.min.toLocaleString()}–${datum.max.toLocaleString()}`;
+
+  document.getElementById('bird-avg').textContent =
+    `${datum.avg.toLocaleString()}`;
+
   icons.forEach((icon, index) => {
     icon.classList.remove('active', 'faded');
     if (index < activeBirds) {
@@ -251,14 +257,14 @@ function updateBirdDisplay(datum) {
   const birdsLost = baselineAvg - datum.avg;
 
   document.getElementById('bird-readout-title').textContent =
-    `${datum.year}: estimated population: ${datum.min.toLocaleString()}-${datum.max.toLocaleString()} birds`;
+    `${datum.year}`;
 
   if (datum.year === populationData[0].year) {
     document.getElementById('bird-readout-text').textContent =
-      `The average estimate in ${datum.year} is about ${datum.avg.toLocaleString()} birds. In this visual, each bird icon represents ${BIRDS_PER_ICON.toLocaleString()} birds.`;
+      `Each icon = ${BIRDS_PER_ICON.toLocaleString()} birds.`;
   } else {
     document.getElementById('bird-readout-text').textContent =
-      `The average estimate in ${datum.year} is about ${datum.avg.toLocaleString()} birds, which is roughly ${birdsLost.toLocaleString()} fewer birds than ${populationData[0].year}. Each bird icon represents ${BIRDS_PER_ICON.toLocaleString()} birds.`;
+      `About ${birdsLost.toLocaleString()} fewer birds since ${populationData[0].year}.`;
   }
 }
 
@@ -288,12 +294,18 @@ function updateTreeDisplay(datum) {
   const text = document.getElementById('tree-readout-text');
 
   if (title) {
-    title.textContent = `${datum.year}: ${healthyKm2.toLocaleString()} km² healthy / ${disturbedKm2.toLocaleString()} km² disturbed`;
+    title.textContent = `${datum.year}`;
   }
+
+  document.getElementById('tree-healthy').textContent =
+    `${healthyKm2.toLocaleString()} km²`;
+
+  document.getElementById('tree-disturbed').textContent =
+    `${disturbedKm2.toLocaleString()} km²`;
 
   if (text) {
     text.textContent =
-      `In ${datum.year}, the visualization estimates about ${datum.habitatKm2.toLocaleString()} km² of habitat remaining. Around ${disturbedKm2.toLocaleString()} km² is shown as disturbed, leaving about ${healthyKm2.toLocaleString()} km² of healthier nesting habitat.`;
+      `Out of ${datum.habitatKm2.toLocaleString()} km², a large portion is disturbed, meaning fewer safe nesting areas for the birds.`;
   }
 }
 
