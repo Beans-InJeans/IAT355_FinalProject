@@ -29,8 +29,9 @@
           <div class="eyebrow">Jenna Han | Joshua Nam | Rico Wen</div>
           <h1>Marbled Murrelet <span class="accent">Habitat + Population</span> in British Columbia.</h1>
           <p>
-            A data visualization project exploring decades of habitat fragmentation, old-growth canopy loss,
-            and population decline affecting one of British Columbia’s threatened seabirds.
+            The Marbled Murrelet is a threatened seabird in British Columbia that depends on old-growth forests for nesting.
+            Over time, logging and habitat disturbance have reduced these forests, leading to a steady population decline.
+            This project visualizes how habitat loss and population trends are connected across time.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#habitat">View Habitat Data</a>
@@ -40,6 +41,20 @@
         <div class="bird-hero-wrap">
           <div class="bird-glow"></div>
           <img src="images/murrelet.png" alt="Marbled Murrelet" class="hero-bird-img">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <div class="card-inner">
+            <h3 class="small-title">Geographic Context</h3>
+            <p class="chart-subtitle">
+              The Marbled Murrelet lives along the coast of British Columbia, relying on old-growth forests near the ocean.
+            </p>
+            <img src="images/bc-map.jpg" alt="Map of British Columbia" class="bc-map">
+          </div>
         </div>
       </div>
     </section>
@@ -72,10 +87,13 @@
                 Hover a point to view exact values and compare intact habitat with disturbed landscape.
                 Intermediate years are interpolated between 2002 and 2020.
               </p>
+              <p class="chart-helper">
+                This chart shows how old-growth habitat (green) is decreasing while disturbed land (pink) is increasing over time.
+              </p>
               <div id="habitat-chart"></div>
               <div class="legend">
-                <span class="lg-old">Old-growth canopy coverage (%)</span>
-                <span class="lg-disturbed">Disturbed landscape (%)</span>
+                <span class="lg-old">Healthy old-growth habitat (%)</span>
+                <span class="lg-disturbed">Disturbed / logged land (%)</span>
               </div>
             </div>
           </article>
@@ -102,6 +120,7 @@
       </div>
     </section>
 
+
     <section class="section" id="population">
       <div class="container">
         <div class="section-heading">
@@ -120,9 +139,12 @@
                 Hover a point to view estimated population ranges and average counts.
                 Intermediate years are interpolated between 2002 and 2020.
               </p>
+              <p class="chart-helper">
+                This chart shows the estimated number of Marbled Murrelets over time. Each point represents a year, and lower values indicate population decline.
+              </p>
               <div id="population-chart"></div>
               <div class="legend">
-                <span class="lg-pop">Average estimated population (birds)</span>
+                <span class="lg-pop">Estimated population (number of birds)</span>
               </div>
             </div>
           </article>
@@ -166,7 +188,6 @@
 
           <article class="card status-image">
             <div class="card-inner">
-              <div class="eyebrow">Conservation Status</div>
               <h3>THREATENED</h3>
             </div>
           </article>

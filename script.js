@@ -81,6 +81,13 @@ function drawHabitatChart() {
   const xAxis = d3.axisBottom(x).tickFormat(d3.format('d')).ticks(6);
   const yAxis = d3.axisLeft(y).ticks(5).tickFormat(d => `${d}%`);
 
+  g.append("text")
+    .attr("x", x(2020) - 150)
+    .attr("y", y(30) - 0)
+    .attr("fill", "#b8d9af")
+    .attr("font-size", "12px")
+    .text("Significant habitat decline");
+
   g.append('g')
     .attr('transform', `translate(0,${innerHeight})`)
     .call(xAxis)
@@ -355,6 +362,13 @@ function drawPopulationChart() {
       d3.max(populationData, d => d.avg)
     ])
     .range([2, 6]);
+
+  g.append("text")
+    .attr("x", x(2020) - 150)
+    .attr("y", y(56500) - 30)
+    .attr("fill", "#e7aaa2")
+    .attr("font-size", "12px")
+    .text("~15,000 birds lost since 2002");
 
   g.append('g')
     .attr('transform', `translate(0,${innerHeight})`)
